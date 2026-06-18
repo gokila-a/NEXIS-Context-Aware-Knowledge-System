@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexis</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="topbar-menu" id="menuBtn">&#9776;</button>
+    <span class="topbar-title">Nexis</span>
+  </header>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand"><span>Nexis</span></div>
+      <div class="sidebar-section-label">Contexts</div>
+      <ul class="context-list" id="contextList">
+        <li class="context-item active" data-id="all">
+          <span class="context-dot"></span>
+          <span class="context-name">All Entries</span>
+        </li>
+      </ul>
+      <div class="sidebar-add-context">
+        <input type="text" id="newContextInput" placeholder="New context" maxlength="60" />
+        <button id="addContextBtn">+</button>
+      </div>
+    </aside>
+    <section class="entries-panel">
+      <div class="entries-header">
+        <div class="search-wrap">
+          <input type="text" id="searchInput" placeholder="Search entries" />
+        </div>
+        <button class="btn-primary" id="newEntryBtn">+ New</button>
+      </div>
+      <ul class="entries-list" id="entriesList"></ul>
+      <div class="entries-empty" id="entriesEmpty" style="display:none">
+        <p>No entries yet. Click <strong>+ New</strong> to create one.</p>
+      </div>
+    </section>
+    <section class="detail-panel" id="detailPanel">
+      <div class="detail-placeholder" id="detailPlaceholder">
+        <p>Select an entry to view or edit it</p>
+      </div>
+      <div class="detail-content" id="detailContent" style="display:none">
+        <div class="detail-toolbar">
+          <div class="detail-meta" id="detailMeta"></div>
+          <div class="detail-actions">
+            <button class="btn-primary" id="saveBtn">Save</button>
+            <button class="btn-danger" id="deleteBtn">Delete</button>
+          </div>
+        </div>
+        <input type="text" class="entry-title-input" id="titleInput" placeholder="Entry title" />
+        <textarea class="entry-content-input" id="contentInput" placeholder="Write your entry here"></textarea>
+        <div class="detail-section">
+          <h3>Contexts</h3>
+          <div class="context-chips" id="entryContextChips"></div>
+          <select id="contextAssignSelect"><option value="">Assign a context</option></select>
+        </div>
+        <div class="detail-section">
+          <h3>Relations</h3>
+          <ul class="relations-list" id="relationsList"></ul>
+          <div class="add-relation-row">
+            <select id="relationTypeSelect">
+              <option value="related">related to</option>
+              <option value="references">references</option>
+              <option value="extends">extends</option>
+              <option value="contradicts">contradicts</option>
+            </select>
+            <select id="relationTargetSelect"><option value="">Select entry</option></select>
+            <button class="btn-secondary" id="addRelationBtn">Link</button>
+          </div>
+        </div>
+        <div class="detail-section">
+          <h3>Version History</h3>
+          <ul class="versions-list" id="versionsList"></ul>
+          <p class="versions-empty" id="versionsEmpty" style="display:none">No versions yet.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="config.js"></script>
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
